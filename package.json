@@ -1,0 +1,15 @@
+{
+  "name": "upi-mobile-banking-registration",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Problem 259 - UPI & Mobile Banking Registration full-stack project",
+  "scripts": {
+    "install:all": "npm.cmd install --prefix server && npm.cmd install --prefix client",
+    "dev": "concurrently \"npm.cmd run dev --prefix server\" \"npm.cmd run dev --prefix client\"",
+    "build": "npm.cmd run build --prefix client",
+    "start": "npm.cmd start --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

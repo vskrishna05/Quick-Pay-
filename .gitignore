@@ -1,0 +1,9 @@
+node_modules/
+client/dist/
+.env.local
+server/.env
+.vercel/
+.vscode/
+debug-page*.png
+registration-fixed.png
+*.log

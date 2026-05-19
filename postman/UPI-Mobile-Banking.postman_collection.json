@@ -1,0 +1,109 @@
+{
+  "info": {
+    "name": "UPI Mobile Banking Registration",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Seed Demo Data",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/seed"
+      }
+    },
+    {
+      "name": "Create User",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"fullName\": \"Demo User\",\n  \"mobile\": \"9876543211\",\n  \"upiId\": \"demouser@upi\",\n  \"mpin\": \"1234\"\n}"
+        },
+        "url": "{{baseUrl}}/users"
+      }
+    },
+    {
+      "name": "List Users",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/users"
+      }
+    },
+    {
+      "name": "Link Account",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": 1,\n  \"bankName\": \"HDFC Bank\",\n  \"accountNumber\": \"123456789012\",\n  \"ifsc\": \"HDFC0001234\",\n  \"accountType\": \"Savings\",\n  \"isPrimary\": true\n}"
+        },
+        "url": "{{baseUrl}}/accounts"
+      }
+    },
+    {
+      "name": "Save Limits",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": 1,\n  \"dailyLimit\": 100000,\n  \"perTransactionLimit\": 25000\n}"
+        },
+        "url": "{{baseUrl}}/limits"
+      }
+    },
+    {
+      "name": "Create Mandate",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": 1,\n  \"payeeName\": \"Netflix India\",\n  \"amount\": 649,\n  \"frequency\": \"Monthly\",\n  \"nextPaymentDate\": \"2026-06-01\"\n}"
+        },
+        "url": "{{baseUrl}}/mandates"
+      }
+    },
+    {
+      "name": "Add Transaction",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"userId\": 1,\n  \"receiverUpi\": \"merchant@upi\",\n  \"amount\": 999,\n  \"note\": \"Project demo payment\"\n}"
+        },
+        "url": "{{baseUrl}}/transactions"
+      }
+    },
+    {
+      "name": "Admin Summary",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/admin"
+      }
+    },
+    {
+      "name": "Export CSV",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/export"
+      }
+    }
+  ]
+}
